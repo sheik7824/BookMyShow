@@ -42,7 +42,7 @@ jobs:
           LLM_PROVIDER: openai
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL || 'gpt-4o' }}
-          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+#          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
         run: |
           python -m review_agent \
             --repo . \
