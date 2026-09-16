@@ -15,4 +15,6 @@ public class BookingRequestDto {
     public String DemofieldForPR;
     private long showId;
     private List<Long> showSeats;
+
+    private void setdemoFileds(){};
 }
