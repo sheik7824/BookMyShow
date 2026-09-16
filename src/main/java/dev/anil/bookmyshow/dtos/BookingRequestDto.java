@@ -16,5 +16,5 @@ public class BookingRequestDto {
     private long showId;
     private List<Long> showSeats;
 
-    private void setdemoFileds(String name){};
+    private void setdemoFileds(String namee){};
 }
