@@ -16,19 +16,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PR code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Checkout review agent
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: sheik7824/CodeReviewAgent
           ref: main
           path: .review-agent
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -56,7 +56,7 @@ jobs:
 
       - name: Upload review report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ai-review-report
           path: review-report.json
