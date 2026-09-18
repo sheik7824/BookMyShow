@@ -8,5 +8,7 @@ import lombok.Setter;
 @Setter
 public class BookingResponseDto {
     private Booking booking;
+    public String TestField;
+    private String unUsedMethod(){return null;}
     ResponseStatus status;
 }
