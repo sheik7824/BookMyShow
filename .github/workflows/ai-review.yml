@@ -1,4 +1,12 @@
 # Runs the AI review agent for pull requests in BookMyShow.
+#
+# Comments and statuses are posted as a custom GitHub App (own name + avatar) instead
+# of github-actions[bot]. Required:
+#   repo variable  AI_REVIEW_APP_ID           - the GitHub App's App ID
+#   repo secret    AI_REVIEW_APP_PRIVATE_KEY  - the App's PEM private key
+#   repo secret    OPENAI_API_KEY             (OPENAI_MODEL optional)
+# The App must be installed on this repo with permissions:
+#   Pull requests: Read & write, Contents: Read, Commit statuses: Read & write
 
 name: AI Code Review
 
@@ -35,9 +43,16 @@ jobs:
       - name: Install review agent
         run: python -m pip install ./.review-agent
 
+      - name: Mint GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.AI_REVIEW_APP_ID }}
+          private-key: ${{ secrets.AI_REVIEW_APP_PRIVATE_KEY }}
+
       - name: Run AI review
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           LLM_PROVIDER: openai
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

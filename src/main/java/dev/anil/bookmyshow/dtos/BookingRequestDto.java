@@ -12,6 +12,9 @@ import java.util.List;
 public class BookingRequestDto {
 
     private long userId;
+    public String DemofieldForPR;
     private long showId;
     private List<Long> showSeats;
+
+    private void setdemoFileds(String namess){};
 }

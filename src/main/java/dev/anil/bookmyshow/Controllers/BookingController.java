@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 public class BookingController {
 
+    public Integer Valuees;
     private BookingService bookingService;
 
     public BookingController(BookingService bookingService) {
